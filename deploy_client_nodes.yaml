@@ -1,0 +1,29 @@
+- name: Deploy client elasticsearch node(s)
+  hosts:
+  - client
+  user: deploy
+  become: yes
+  gather_facts: yes
+  vars_files:
+    - elasticsearch-qos-common-5.6.4.yaml
+  roles:
+  - { role: elastic.elasticsearch,
+        es_instance_name: "client",
+        es_config: {
+          cluster.name: "{{ elasticsearch_cluster_name }}",
+          network.host: "{{ ansible_ssh_host }}",
+          http.port: 9200,
+          transport.tcp.port: 9300,
+          node.data: false,
+          node.master: false,
+          bootstrap.memory_lock: false,
+          discovery.zen.minimum_master_nodes: "{{ elasticsearch_discovery_zen_minimum_master_nodes }}",
+          script.inline: true,
+          discovery.zen.ping.unicast.hosts: "192.168.56.103",
+          thread_pool.bulk.queue_size: 2000,
+          thread_pool.search.queue_size: 10000,
+          xpack.security.enabled: false
+          }
+       } 
+#  - { role: kibana }
+    

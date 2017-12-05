@@ -1,0 +1,18 @@
+es_version: "6.0.0"
+es_major_version: "6.x"
+es_enable_xpack: false 
+es_xpack_features: ["alerting","monitoring","graph","ml","security"] 
+elasticsearch_cluster_name: demo-cluster 
+elasticsearch_discovery_zen_minimum_master_nodes: 1 
+es_heap_size: "{{ (ansible_memtotal_mb / 2) | int }}m" 
+es_api_basic_auth_username: elastic
+es_api_basic_auth_password: changeme
+conf_dir: "/etc/elasticsearch"
+es_data_dirs: ["/data"]
+
+#es_plugins:
+#  - plugin: ingest-geoip
+
+#es_plugins_reinstall: true
+es_allow_downgrades: true
+kibana_version: "5.6.4"
