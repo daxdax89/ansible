@@ -2,7 +2,7 @@
 master ansible_host=192.168.56.103 ansible_connection=ssh
 
 [es_client]
-client ansible_host=192.168.56.106 ansible_connection=ssh
+client1 ansible_host=192.168.56.106 ansible_connection=ssh
 
 [es_data]
 data_1 ansible_host=192.168.56.104 ansible_connection=ssh
